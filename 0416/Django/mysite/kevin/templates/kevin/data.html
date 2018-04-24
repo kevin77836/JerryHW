@@ -1,0 +1,23 @@
+<h1>公司員工列表</h1>
+{% for c in company %}
+<h2>{{ c.name }}</h2>
+{% if c.employee_set.all %}
+<h3>本公司共有{{ c.employee_set.all|length }}位員工</h3>
+<table class="table">
+	<tr>
+		<td>名字</td>
+		<td>生日</td>
+		<td>性別</td>
+	</tr>
+	{% for employee in c.employee_set.all %}
+	<tr>
+		<td>{{ employee.name }}</td>
+		<td>{{ employee.birthday }}</td>
+		<td>{{ employee.sexuality }}</td>
+	</tr>
+	{% endfor %}
+</table>
+    {% else %}
+    <p>本公司目前沒有員工</p>
+    {% endif %}
+    {% endfor %}
